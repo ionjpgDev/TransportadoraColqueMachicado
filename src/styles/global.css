@@ -13,20 +13,76 @@
 @layer base {
   :root {
     --sl-color-bg: #fcf9f2;
+    --light-overlay: radial-gradient(circle at 20% 30%, rgba(255,245,235,0.6) 0%, rgba(255,255,255,0) 80%);
+    --dark-overlay: radial-gradient(circle at 80% 20%, rgba(40,60,100,0.4) 0%, rgba(0,0,0,0) 80%);
   }
   :root[data-theme="dark"] {
     --sl-color-bg: #0B111E;
+    --dark-overlay: radial-gradient(circle at 20% 40%, rgba(60,100,150,0.3) 0%, rgba(0,0,0,0) 80%);
+    --light-overlay: radial-gradient(circle at 90% 70%, rgba(100,130,180,0.2) 0%, rgba(0,0,0,0) 80%);
   }
+
+  /* Fondo base */
   body,
   .sl-page,
   main {
-    background: linear-gradient(135deg, #FCF9F2 0%, #F0EBE0 50%, #E8E2D4 100%);
+    background: linear-gradient(135deg, #807c83 0%, #ffffff 100%);
     background-attachment: fixed;
+    position: relative;
   }
+
+  /* Capa de luces claro */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--light-overlay);
+    pointer-events: none;
+    z-index: 0;
+    animation: softGlow 12s ease-in-out infinite alternate;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 80% 70%, rgba(200,190,180,0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: glowMove 18s ease-in-out infinite alternate;
+  }
+
+  /* Ajustes para modo oscuro */
   :root[data-theme="dark"] body,
   :root[data-theme="dark"] .sl-page,
   :root[data-theme="dark"] main {
-    background: linear-gradient(135deg, #0B111E, #1a1f2e, #0f172a);
+    background: linear-gradient(135deg, #181e34 0%, #0a0e1a 100%);
+    background-attachment: fixed;
+  }
+  :root[data-theme="dark"] body::before {
+    background: radial-gradient(circle at 30% 20%, rgba(80,120,180,0.25) 0%, transparent 80%);
+    animation: softGlowDark 15s ease-in-out infinite alternate;
+  }
+  :root[data-theme="dark"] body::after {
+    background: radial-gradient(circle at 90% 85%, rgba(50,80,140,0.2) 0%, transparent 80%);
+    animation: glowMoveDark 20s ease-in-out infinite alternate;
+  }
+
+  /* Animaciones */
+  @keyframes softGlow {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); background-position: 10% 20%; }
+  }
+  @keyframes glowMove {
+    0% { opacity: 0.4; transform: translate(0, 0); }
+    100% { opacity: 0.8; transform: translate(2%, 3%); }
+  }
+  @keyframes softGlowDark {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 0.7; transform: scale(1.08); background-position: 15% 10%; }
+  }
+  @keyframes glowMoveDark {
+    0% { opacity: 0.2; transform: translate(0, 0); }
+    100% { opacity: 0.6; transform: translate(-2%, 4%); }
   }
 }
 
@@ -40,207 +96,50 @@
     background-color: rgba(11, 17, 30, 0.9) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
-  
+}
+/* ===== ESTILOS PARA CARDS PERSONALIZADAS ===== */
+.custom-cards-grid .card.sl-flex {
+  transition: all 0.3s ease;
 }
 
-@layer components {
-  
+/* Modo claro */
+:root[data-theme="light"] .custom-cards-grid .card.sl-flex {
+  background: rgba(128, 124, 131, 0.1);
+  border: 1px solid rgba(128, 124, 131, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+:root[data-theme="light"] .custom-cards-grid .card.sl-flex:hover {
+  background: rgba(128, 124, 131, 0.2);
+  border-color: rgba(128, 124, 131, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+}
+:root[data-theme="light"] .custom-cards-grid .card.sl-flex h2,
+:root[data-theme="light"] .custom-cards-grid .card.sl-flex p {
+  color: #2d2a24;
 }
 
-/* Figuras CSS en el fondo (solo modo claro) */
-body {
-  position: relative;
-  overflow-x: hidden;
+/* Modo oscuro */
+:root[data-theme="dark"] .custom-cards-grid .card.sl-flex {
+  background: rgba(24, 30, 52, 0.4);
+  border: 1px solid rgba(24, 30, 52, 0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+:root[data-theme="dark"] .custom-cards-grid .card.sl-flex:hover {
+  background: rgba(24, 30, 52, 0.7);
+  border-color: rgba(24, 30, 52, 0.9);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
+}
+:root[data-theme="dark"] .custom-cards-grid .card.sl-flex h2,
+:root[data-theme="dark"] .custom-cards-grid .card.sl-flex p {
+  color: #e2e8f0;
 }
 
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 50%;
-  opacity: 0.1;
+/* Íconos dentro de las cards */
+.custom-cards-grid .card.sl-flex svg {
+  transition: transform 0.2s;
 }
-
-body::before {
-  width: 40vw;
-  height: 40vw;
-  background: radial-gradient(circle, #D6CBB8, transparent);
-  top: 10%;
-  left: -10%;
+.custom-cards-grid .card.sl-flex:hover svg {
+  transform: scale(1.05);
 }
-
-body::after {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, #C5B99E, transparent);
-  bottom: 10%;
-  right: -20%;
-}
-
-:root[data-theme="dark"] body::before,
-:root[data-theme="dark"] body::after {
-  opacity: 0.15;
-}
-
-:root[data-theme="dark"] body::before {
-  background: radial-gradient(circle, #2dd4bf, transparent);
-}
-
-:root[data-theme="dark"] body::after {
-  background: radial-gradient(circle, #f0abfc, transparent);
-}
-
-@media (min-width: 768px) {
-  body::before {
-    width: 30vw;
-    height: 30vw;
-  }
-  body::after {
-    width: 40vw;
-    height: 40vw;
-  }
-}
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    text-align: center;
-    margin: 3rem 0;
-  }
-  .stat-value {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--sl-color-accent);
-    line-height: 1.2;
-  }
-  .stat-label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--sl-color-gray-2);
-  }
-
-  /* Cobertura */
-  .coverage-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: center;
-    margin: 3rem 0;
-  }
-  .coverage-text {
-    flex: 1;
-  }
-  .coverage-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  .coverage-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    margin-top: 1rem;
-    list-style: none;
-    padding: 0;
-  }
-  .coverage-list li {
-    font-size: 0.95rem;
-  }
-  .coverage-image {
-    flex: 1;
-    text-align: center;
-  }
-  .coverage-image img {
-    max-width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-  }
-
-  /* Testimonios */
-  .testimonials-title {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 2rem 0 2rem;
-  }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  .testimonial-card {
-    background: var(--sl-color-bg-sidebar);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-  }
-  .testimonial-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 1rem;
-    border: 3px solid var(--sl-color-accent);
-  }
-  .testimonial-text {
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-  .testimonial-author {
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-  .testimonial-role {
-    font-size: 0.8rem;
-    color: var(--sl-color-gray-3);
-  }
-
-  /* Call to action */
-  .cta-banner {
-    background: linear-gradient(135deg, var(--sl-color-accent-low), var(--sl-color-accent));
-    color: white;
-    text-align: center;
-    padding: 3rem 2rem;
-    border-radius: 2rem;
-    margin: 3rem 0;
-  }
-  .cta-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .cta-banner p {
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-  }
-  .cta-button {
-    display: inline-block;
-    background: white;
-    color: var(--sl-color-accent);
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .cta-button:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
-
-  /* Ajustes responsivos */
-  @media (max-width: 768px) {
-    .coverage-section {
-      flex-direction: column;
-    }
-    .stats-grid {
-      gap: 1rem;
-    }
-    .stat-value {
-      font-size: 2rem;
-    }
-  }

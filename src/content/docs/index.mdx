@@ -1,86 +1,72 @@
 ---
 title: Transporte de carga <span class="font-extrabold bg-gradient-to-r from-emerald-500 via-green-400 to-teal-400 bg-clip-text text-transparent">confiable</span> y <span class="font-extrabold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">eficiente</span>
 description: Gestionamos el transporte de mercancías con procesos seguros, seguimiento operativo y control documental. Optimizamos cada envío para garantizar entregas oportunas y una mejor experiencia para nuestros clientes.
-template: splash 
+template: splash
 hero:
   layout: split-left
-  
+
   announcement:
     text: Sobre la Empresa
-    link: /sobre-nosotros
+    link: TransportadoraColqueMachicado/sobre-nosotros
   image:
     file: ../../assets/hombre-caja-web.webp
-    
 
-    
   actions:
-    - text: Solicitar cotización
-      link: /lucode-starlight-theme/guides/theming/
+    - text: Ir a la documentación
+      link: proyecto-analisis/01-aspectos-generales
       icon: right-arrow
     - text: Conocer servicios
-      link: /lucode-starlight-theme/reference/components/
+      link: sobre-nosotros
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-import { ContainerSection } from 'lucode-starlight/components';
-import StatsSection from '../../components/StatsSection.astro';
-import CoverageSection from '../../components/CoverageSection.astro';
-import TestimonialsSection from '../../components/TestimonialsSection.astro';
-import CtaBanner from '../../components/CtaBanner.astro';
+import { Card, CardGrid } from "@astrojs/starlight/components";
+import { ContainerSection } from "lucode-starlight/components";
+import StatsSection from "../../components/StatsSection.astro";
+import CoverageSection from "../../components/CoverageSection.astro";
+import TestimonialsSection from "../../components/TestimonialsSection.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
 
+    <ContainerSection stagger>
 
-	<ContainerSection stagger>
-
+<div class="custom-cards-grid">
 <CardGrid>
   <Card title="Envíos Nacionales" icon="rocket">
     Transporte de mercancías entre las principales ciudades del país.
   </Card>
 
-  <Card title="Cotizaciones" icon="open-book">
-    Solicite cotizaciones de manera rápida y organizada.
-  </Card>
+<Card title="Cotizaciones" icon="open-book">
+  Solicite cotizaciones de manera rápida y organizada.
+</Card>
 
-  <Card title="Seguimiento Operativo" icon="right-arrow">
-    Conozca el estado de sus envíos durante cada etapa del transporte.
-  </Card>
+<Card title="Seguimiento Operativo" icon="right-arrow">
+  Conozca el estado de sus envíos durante cada etapa del transporte.
+</Card>
 
-  <Card title="Gestión Documental" icon="pencil">
-    Administración centralizada de pedidos, guías y comprobantes.
-  </Card>
+<Card title="Gestión Documental" icon="pencil">
+  Administración centralizada de pedidos, guías y comprobantes.
+</Card>
 
-  <Card title="Atención Personalizada" icon="star">
-    Soluciones adaptadas a las necesidades de cada cliente.
-  </Card>
+<Card title="Atención Personalizada" icon="star">
+  Soluciones adaptadas a las necesidades de cada cliente.
+</Card>
 
   <Card title="Operaciones Seguras" icon="warning">
     Procesos orientados a la protección y control de la mercancía.
   </Card>
 </CardGrid>
-</ContainerSection>
-	
-
-<ContainerSection>
+</div>
   <StatsSection />
-</ContainerSection>
-
-<ContainerSection>
   <CoverageSection />
-</ContainerSection>
 
-<ContainerSection>
-  <TestimonialsSection />
-</ContainerSection>
+<TestimonialsSection />
 
-<ContainerSection>
-  <CtaBanner 
+  <CtaBanner
     text={{
       title: "¿Listo para cotizar?",
-      description: "Respondemos en menos de 2 horas."
+      description: "Respondemos en menos de 2 horas.",
     }}
     link="/TransportadoraColqueMachicado/contacto"
     buttonText="Ir a contacto"
   />
 </ContainerSection>
-	
-

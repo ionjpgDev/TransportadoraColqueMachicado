@@ -30,11 +30,9 @@ const stats = [
     gap: 1.5rem;
   }
   .stat-card {
-    flex: 1 1 200px; /* Base de 200px, pero crece de forma equitativa */
+    flex: 1 1 200px;
     min-width: 180px;
-    max-width: 250px; /* Opcional: un ancho máximo para que no se estiren demasiado */
-    background: var(--sl-color-bg-sidebar);
-    border: 1px solid var(--sl-color-gray-5);
+    max-width: 250px;
     border-radius: 0.75rem;
     padding: 1.5rem 0.5rem;
     text-align: center;
@@ -42,33 +40,86 @@ const stats = [
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     box-sizing: border-box;
+    cursor: pointer;
   }
+
+  /* Modo claro: fondo plomo suave, borde sutil */
+  :root[data-theme="light"] .stat-card {
+    background: rgba(128, 124, 131, 0.15);
+    border: 1px solid rgba(128, 124, 131, 0.3);
+  }
+  /* Modo oscuro: fondo azul oscuro */
+  :root[data-theme="dark"] .stat-card {
+    background: rgba(24, 30, 52, 0.4);
+    border: 1px solid rgba(24, 30, 52, 0.6);
+  }
+
+  /* Hover: elevar y cambiar fondo */
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+  :root[data-theme="light"] .stat-card:hover {
+    background: rgba(128, 124, 131, 0.3);
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(128, 124, 131, 0.5);
+  }
+  :root[data-theme="dark"] .stat-card:hover {
+    background: rgba(24, 30, 52, 0.7);
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
+    border-color: rgba(24, 30, 52, 0.9);
+  }
+
   .stat-value {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #0B5394;
     line-height: 1.2;
     margin-bottom: 0.5rem;
     white-space: nowrap;
+    transition: color 0.2s;
   }
+
+  /* Modo claro: valor azul oscuro, hover más intenso */
+  :root[data-theme="light"] .stat-value {
+    color: #2c3e66; /* un azul que combina con plomo */
+  }
+  :root[data-theme="light"] .stat-card:hover .stat-value {
+    color: #1a2a4a;
+  }
+
+  /* Modo oscuro: valor azul brillante */
   :root[data-theme="dark"] .stat-value {
     color: #3B82F6;
   }
+  :root[data-theme="dark"] .stat-card:hover .stat-value {
+    color: #60a5fa;
+  }
+
   .stat-label {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
-    color: #4a5568;
     text-align: center;
     max-width: 100%;
     word-break: keep-all;
+    transition: color 0.2s;
+  }
+
+  :root[data-theme="light"] .stat-label {
+    color: #4a5568;
+  }
+  :root[data-theme="light"] .stat-card:hover .stat-label {
+    color: #2d3748;
   }
   :root[data-theme="dark"] .stat-label {
     color: #cbd5e1;
   }
+  :root[data-theme="dark"] .stat-card:hover .stat-label {
+    color: #f0f0f0;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .stats-grid {

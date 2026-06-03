@@ -4,39 +4,118 @@ const { text, link, buttonText } = Astro.props;
 ---
 
 <div class="cta-banner">
-  <h2>{text?.title || '¿Necesitas un presupuesto?'}</h2>
-  <p>{text?.description || 'Contáctanos hoy mismo y te responderemos en menos de 2 horas.'}</p>
-  <a href={link || '/contacto'} class="cta-button">{buttonText || 'Solicitar cotización'}</a>
+  <!-- Contenedor de ondas animadas (fondo) -->
+  <div class="wave">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Contenido original del banner -->
+  <h2>{text?.title || "¿Necesitas un presupuesto?"}</h2>
+  <p>
+    {text?.description || "Contáctanos hoy mismo y te responderemos en menos de 2 horas."}
+  </p>
+  <a href={link || "/contacto"} class="cta-button">
+    {buttonText || "Solicitar cotización"}
+  </a>
 </div>
 
 <style>
   .cta-banner {
+    position: relative;
     text-align: center;
     padding: 3rem 2rem;
     border-radius: 2rem;
     margin: 3rem 0;
-    background: linear-gradient(135deg, var(--sl-color-accent-low), var(--sl-color-accent));
+    background: rgba(0, 0, 0, 0.05);
     color: var(--sl-color-white);
+    overflow: hidden;
     transition: background 0.2s;
+    z-index: 1;
   }
 
-  .cta-banner h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    color: inherit;
+  /* Tema claro: fondo ligeramente plomo */
+  :root[data-theme="light"] .cta-banner {
+    background: rgba(128, 124, 131, 0.2);
+  }
+  /* Tema oscuro: fondo azulado */
+  :root[data-theme="dark"] .cta-banner {
+    background: rgba(24, 30, 52, 0.4);
   }
 
-  .cta-banner p {
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    color: inherit;
+  /* ===== EFECTO DE ONDAS MÁS NOTORIO ===== */
+  .cta-banner .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
   }
 
+  .cta-banner .wave span {
+    position: absolute;
+    content: "";
+    width: 300%;
+    height: 300%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    border-radius: 45%;
+    animation: animate 5s linear infinite;
+  }
+
+  /* Modo claro: colores plomo con alta opacidad */
+  :root[data-theme="light"] .cta-banner .wave span:nth-child(1) {
+    background: rgba(128, 124, 131, 0.9);
+    animation: animate 5s linear infinite;
+  }
+  :root[data-theme="light"] .cta-banner .wave span:nth-child(2) {
+    background: rgba(128, 124, 131, 0.7);
+    animation: animate 10s linear infinite;
+  }
+  :root[data-theme="light"] .cta-banner .wave span:nth-child(3) {
+    background: rgba(128, 124, 131, 0.5);
+    animation: animate 15s linear infinite;
+  }
+
+  /* Modo oscuro: colores azul oscuro más vivos */
+  :root[data-theme="dark"] .cta-banner .wave span:nth-child(1) {
+    background: rgba(24, 30, 52, 0.9);
+    animation: animate 5s linear infinite;
+  }
+  :root[data-theme="dark"] .cta-banner .wave span:nth-child(2) {
+    background: rgba(24, 30, 52, 0.7);
+    animation: animate 10s linear infinite;
+  }
+  :root[data-theme="dark"] .cta-banner .wave span:nth-child(3) {
+    background: rgba(24, 30, 52, 0.5);
+    animation: animate 15s linear infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -75%) rotate(360deg);
+    }
+  }
+
+  /* Asegurar que el texto y botón queden por encima */
+  .cta-banner h2,
+  .cta-banner p,
+  .cta-button {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== BOTÓN CON COLOR DE TEXTO ADAPTADO ===== */
   .cta-button {
     display: inline-block;
     background: var(--sl-color-bg);
-    color: white;
     padding: 0.85rem 2.2rem;
     border-radius: 9999px;
     font-weight: 700;
@@ -48,12 +127,22 @@ const { text, link, buttonText } = Astro.props;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
   }
 
-  /* Efecto de brillo deslizante */
+  /* Modo claro: texto oscuro */
+  :root[data-theme="light"] .cta-button {
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  /* Modo oscuro: texto blanco */
+  :root[data-theme="dark"] .cta-button {
+    color: white;
+    background: #0B111E;
+  }
+
   .cta-button::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -70,12 +159,12 @@ const { text, link, buttonText } = Astro.props;
 
   .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     background: var(--sl-color-accent);
-    color: white;
+    color: white !important; /* Asegura contraste en hover */
   }
 
-  /* Modo oscuro: sombras más profundas */
+  /* Mantenemos sombras específicas del modo oscuro */
   :root[data-theme="dark"] .cta-button {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }

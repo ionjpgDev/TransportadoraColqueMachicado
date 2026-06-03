@@ -1,66 +1,126 @@
 ---
-import { Image } from 'astro:assets';
-import coberturaImg from '../assets/hombre-caja-web.webp'; // ✅ Ruta corregida
+import boliviaMap from '../assets/bolivia.png'; // Ajusta la ruta según tu proyecto
 
 const regiones = [
-  'La Paz',
-  'El Alto',
-  'Santa Cruz',
-  'Cochabamba',
-  'Potosí',
-  'Sucre (Chuquisaca)',
-  'Oruro',
-  'Tarija',
-  'Beni',
-  'Pando'
+  'La Paz', 'El Alto', 'Santa Cruz', 'Cochabamba', 'Potosí',
+  'Sucre (Chuquisaca)', 'Oruro', 'Tarija', 'Beni', 'Pando'
 ];
 ---
 
-<div class="coverage-section">
-  <div class="coverage-text">
-    <h2 class="coverage-title">Cobertura nacional</h2>
+<div class="cover-wrapper">
+  <div class="cover-texto">
+    <h2>📦 Cobertura nacional</h2>
     <p>Llegamos a todos los rincones del país con flota propia y alianzas estratégicas.</p>
-    <ul class="coverage-list">
-      {regiones.map(region => <li>✅ {region}</li>)}
-    </ul>
+    <div class="regiones-grid">
+      {regiones.map(region => (
+        <div class="region-item">
+          <span class="check">✓</span> {region}
+        </div>
+      ))}
+    </div>
   </div>
-  <div class="coverage-image">
-    <Image src={coberturaImg} alt="Cobertura nacional" layout="constrained" />
+  <div class="cover-mapa">
+    <div class="mapa-container">
+      <img src={boliviaMap.src} alt="Mapa de Bolivia" class="mapa-imagen" />
+    </div>
   </div>
 </div>
 
 <style>
-  .coverage-section {
+  .cover-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     align-items: center;
-    margin: 3rem 0;
+    background: rgba(128,124,131,0.03);
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(2px);
   }
-  .coverage-text { flex: 1; }
-  .coverage-title {
+  .cover-texto {
+    flex: 1;
+  }
+  .cover-texto h2 {
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #4a3b32, #2d2a24);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
-  .coverage-list {
+  :root[data-theme="dark"] .cover-texto h2 {
+    background: linear-gradient(135deg, #cbd5e1, #e2e8f0);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  .cover-texto p {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+  }
+  :root[data-theme="dark"] .cover-texto p {
+    color: #94a3b8;
+  }
+  .regiones-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
-    margin-top: 1rem;
-    list-style: none;
-    padding: 0;
   }
-  .coverage-list li { font-size: 0.95rem; }
-  .coverage-image {
+  .region-item {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.6);
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+  :root[data-theme="dark"] .region-item {
+    background: rgba(24,30,52,0.5);
+    color: #e2e8f0;
+  }
+  .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: #10b981;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  .cover-mapa {
     flex: 1;
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
-  .coverage-image :global(img) {
+  .mapa-container {
+    max-width: 480px;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  :root[data-theme="dark"] .mapa-container {
+    background: rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  .mapa-imagen {
+    width: 100%;
+    height: auto;
+    display: block;
     border-radius: 1rem;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
   }
   @media (max-width: 768px) {
-    .coverage-section { flex-direction: column; }
+    .cover-wrapper {
+      flex-direction: column;
+      padding: 1rem;
+    }
   }
 </style>

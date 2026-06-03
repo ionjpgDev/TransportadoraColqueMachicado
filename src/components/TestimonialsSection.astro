@@ -1,6 +1,7 @@
 ---
+// src/components/TestimonialsSection.astro
 import { Image } from 'astro:assets';
-import avatarImg from '../assets/hombre-caja-web.webp'; // ✅ Ruta corregida
+import avatarImg from '../assets/hombre-caja-web.webp';
 
 const testimonios = [
   {
@@ -38,42 +39,94 @@ const testimonios = [
     font-weight: 700;
     text-align: center;
     margin: 2rem 0 2rem;
+    color: var(--sl-color-text); /* respeta el tema */
   }
+
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
   }
+
+  /* Tarjeta base */
   .testimonial-card {
-    background: var(--sl-color-bg-sidebar);
     padding: 1.5rem;
     border-radius: 1rem;
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
+
+  /* Modo claro: fondos plomo suave, texto oscuro */
+  :root[data-theme="light"] .testimonial-card {
+    background: rgba(128, 124, 131, 0.15);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+  }
+
+  /* Modo oscuro: fondos azul oscuro, texto claro */
+  :root[data-theme="dark"] .testimonial-card {
+    background: rgba(24, 30, 52, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: #f0f0f0;
+  }
+
+  /* HOVER: elevar la tarjeta y cambiar intensidad de fondo */
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+
+  :root[data-theme="light"] .testimonial-card:hover {
+    background: rgba(128, 124, 131, 0.3);
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.2);
+  }
+
+  :root[data-theme="dark"] .testimonial-card:hover {
+    background: rgba(24, 30, 52, 0.7);
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Avatar (la imagen ya tiene borde con variable --sl-color-accent) */
   .testimonial-avatar {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
   }
+
   .testimonial-avatar :global(img) {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--sl-color-accent);
+    transition: transform 0.3s ease;
   }
+
+  /* En hover, el avatar crece ligeramente */
+  .testimonial-card:hover .testimonial-avatar :global(img) {
+    transform: scale(1.05);
+  }
+
   .testimonial-text {
     font-style: italic;
     margin-bottom: 1rem;
   }
+
   .testimonial-author {
     font-weight: 700;
     margin-bottom: 0.25rem;
   }
+
   .testimonial-role {
     font-size: 0.8rem;
     color: var(--sl-color-gray-3);
+  }
+
+  /* Ajuste responsivo */
+  @media (max-width: 768px) {
+    .testimonials-title {
+      font-size: 1.5rem;
+    }
   }
 </style>
