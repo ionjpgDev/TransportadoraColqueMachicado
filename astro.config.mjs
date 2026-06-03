@@ -6,7 +6,7 @@ import lucode from 'lucode-starlight';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ionjpgUwu.github.io',
+  site: 'https://ionjpgDev.github.io',
   base: '/TransportadoraColqueMachicado',
   integrations: [
     starlight({
