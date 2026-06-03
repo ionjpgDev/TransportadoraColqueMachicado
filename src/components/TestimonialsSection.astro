@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import avatarImg from '../assets/hombre-caja-web.webp'; // ✅ Ruta corregida
+
+const testimonios = [
+  {
+    name: 'Juan Pérez',
+    role: 'Gerente de Logística, Importaciones SAC',
+    text: 'Excelente servicio, siempre puntuales y con la documentación en orden.',
+    avatar: avatarImg,
+  },
+  {
+    name: 'María Gómez',
+    role: 'Directora Comercial, Retail Andino',
+    text: 'La mejor experiencia en transporte de carga pesada. Seguimiento en tiempo real.',
+    avatar: avatarImg,
+  },
+];
+---
+
+<h2 class="testimonials-title">Lo que dicen nuestros clientes</h2>
+<div class="testimonials-grid">
+  {testimonios.map(t => (
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">
+        <Image src={t.avatar} alt={t.name} layout="constrained" width={80} height={80} />
+      </div>
+      <p class="testimonial-text">“{t.text}”</p>
+      <p class="testimonial-author">{t.name}</p>
+      <p class="testimonial-role">{t.role}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .testimonials-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0 2rem;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .testimonial-card {
+    background: var(--sl-color-bg-sidebar);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  }
+  .testimonial-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .testimonial-avatar :global(img) {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--sl-color-accent);
+  }
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .testimonial-author {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>

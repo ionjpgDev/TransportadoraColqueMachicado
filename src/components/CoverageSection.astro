@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import coberturaImg from '../assets/hombre-caja-web.webp'; // ✅ Ruta corregida
+
+const regiones = [
+  'La Paz',
+  'El Alto',
+  'Santa Cruz',
+  'Cochabamba',
+  'Potosí',
+  'Sucre (Chuquisaca)',
+  'Oruro',
+  'Tarija',
+  'Beni',
+  'Pando'
+];
+---
+
+<div class="coverage-section">
+  <div class="coverage-text">
+    <h2 class="coverage-title">Cobertura nacional</h2>
+    <p>Llegamos a todos los rincones del país con flota propia y alianzas estratégicas.</p>
+    <ul class="coverage-list">
+      {regiones.map(region => <li>✅ {region}</li>)}
+    </ul>
+  </div>
+  <div class="coverage-image">
+    <Image src={coberturaImg} alt="Cobertura nacional" layout="constrained" />
+  </div>
+</div>
+
+<style>
+  .coverage-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    margin: 3rem 0;
+  }
+  .coverage-text { flex: 1; }
+  .coverage-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .coverage-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+  .coverage-list li { font-size: 0.95rem; }
+  .coverage-image {
+    flex: 1;
+    text-align: center;
+  }
+  .coverage-image :global(img) {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+  }
+  @media (max-width: 768px) {
+    .coverage-section { flex-direction: column; }
+  }
+</style>

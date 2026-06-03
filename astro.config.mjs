@@ -2,31 +2,43 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
+import lucode from 'lucode-starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://ionjpgUwu.github.io',
+  base: '/TransportadoraColqueMachicado',
   integrations: [
     starlight({
-      title: "Docs with Tailwind",
+      plugins: [
+        lucode({
+          navLinks: [
+            { label: 'INICIO', link: '/' },
+            { label: 'DOCS', link: '/' },
+            { label: 'CONTACTO', link: '/contacto' },
+          ],
+        }),
+      ],
+      components: {
+        SocialIcons: "./src/components/CustomSocialIcons.astro", 
+      },
+      title: "TRANSPORTADORA COLQUE MACHICADO S.R.L.",
       defaultLocale: "es",
+      logo: {
+        dark: "./src/assets/logo-light.svg",
+        light: "./src/assets/logo-dark.svg",
+      },
       locales: {
         root: {
           label: "Español",
           lang: "es",
         },
       },
-      social: [
-        {
-          icon: "github",
-          label: "GitHub",
-          href: "https://github.com/withastro/starlight",
-        },
-      ],
+      
       sidebar: [
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Example Guide", slug: "guides/example" },
           ],
         },

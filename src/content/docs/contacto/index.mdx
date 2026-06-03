@@ -1,0 +1,90 @@
+---
+title: "Contáctanos"
+description: "Ponte en contacto con Transportadora Colque Machicado S.R.L. Estamos listos para atenderte."
+template: splash
+hero:
+  layout: split-right
+  announcement:
+    text: Atención al Cliente
+    link: /
+  image:
+    file: ../../../assets/hombre-caja-web.webp
+  title: "Contáctanos"
+  tagline: "Estamos a un mensaje de distancia"
+---
+
+import { ContainerSection } from 'lucode-starlight/components';
+
+<ContainerSection>
+  <div class="grid md:grid-cols-2 gap-10 my-12">
+    <div>
+      <h2 class="text-2xl font-bold text-[var(--sl-color-accent)] mb-6 border-l-4 border-[var(--sl-color-accent)] pl-4">Información de contacto</h2>
+      
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">📍</div>
+          <div>
+            <h3 class="font-semibold text-[var(--sl-color-gray-1)]">Zona / Dirección</h3>
+            <p class="text-[var(--sl-color-gray-2)]">Zona Rosas Pampa<br />Calle 25 Nº 10</p>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">📞</div>
+          <div>
+            <h3 class="font-semibold text-[var(--sl-color-gray-1)]">WhatsApp</h3>
+            <p class="text-[var(--sl-color-gray-2)]">591 78834336</p>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+          <div class="text-3xl">🚛</div>
+          <div>
+            <h3 class="font-semibold text-[var(--sl-color-gray-1)]">Servicios</h3>
+            <p class="text-[var(--sl-color-gray-2)] text-sm leading-relaxed">
+              • Transporte de carga nacional e internacional<br />
+              • Importación de repuestos automotores<br />
+              • Vehículos livianos y camiones<br />
+              • Línea blanca, electrodomésticos, TV, equipos de sonido<br />
+              • Computadoras, celulares, accesorios electrónicos<br />
+              • Telas y textiles
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-4 bg-[var(--sl-color-bg-sidebar)] rounded-xl border border-[var(--sl-color-gray-5)]">
+        <p class="text-center text-[var(--sl-color-gray-2)]">¿Prefieres escribirnos por WhatsApp?</p>
+        <a 
+          href="https://wa.me/59178834336?text=Hola%2C%20quiero%20más%20información%20sobre%20sus%20servicios." 
+          target="_blank"
+          class="block w-full text-center mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition"
+        >
+          📲 Escríbenos a WhatsApp
+        </a>
+      </div>
+    </div>
+    
+    <div>
+      <h2 class="text-2xl font-bold text-[var(--sl-color-accent)] mb-6 border-l-4 border-[var(--sl-color-accent)] pl-4">Nuestra ubicación</h2>
+      <div class="rounded-xl overflow-hidden border border-[var(--sl-color-gray-5)] shadow-md">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.6651197771407!2d-68.1731659333331!3d-16.542995601503687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edf255833f113%3A0xac8ecbb4aa047b84!2sTrans.%20Colque%20Machicado%20SRL.!5e0!3m2!1ses!2sbo!4v1780456697125!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="text-center text-sm text-[var(--sl-color-gray-3)] mt-2">Zona Rosas Pampa, Calle 25 Nº 10 - La Paz, Bolivia</p>
+    </div>
+  </div>
+</ContainerSection>
+
+<ContainerSection>
+  <div class="bg-gradient-to-r from-[var(--sl-color-accent-low)] to-[var(--sl-color-accent)] text-white p-8 rounded-2xl text-center my-8">
+    <h2 class="text-2xl font-bold mb-2">¿Necesitas una cotización rápida?</h2>
+    <p>Contáctanos por WhatsApp y te responderemos en menos de 2 horas.</p>
+    <a 
+      href="https://wa.me/59178834336?text=Hola%2C%20necesito%20una%20cotización%20para%20transporte." 
+      target="_blank"
+      class="inline-block mt-4 bg-white text-[var(--sl-color-accent)] hover:bg-gray-100 font-bold py-2 px-6 rounded-full transition"
+    >
+      Cotizar ahora →
+    </a>
+  </div>
+</ContainerSection>

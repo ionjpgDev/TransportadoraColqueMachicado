@@ -1,0 +1,98 @@
+---
+// src/components/CtaBanner.astro
+const { text, link, buttonText } = Astro.props;
+---
+
+<div class="cta-banner">
+  <h2>{text?.title || '¿Necesitas un presupuesto?'}</h2>
+  <p>{text?.description || 'Contáctanos hoy mismo y te responderemos en menos de 2 horas.'}</p>
+  <a href={link || '/contacto'} class="cta-button">{buttonText || 'Solicitar cotización'}</a>
+</div>
+
+<style>
+  .cta-banner {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+    background: linear-gradient(135deg, var(--sl-color-accent-low), var(--sl-color-accent));
+    color: var(--sl-color-white);
+    transition: background 0.2s;
+  }
+
+  .cta-banner h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: inherit;
+  }
+
+  .cta-banner p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    color: inherit;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--sl-color-bg);
+    color: white;
+    padding: 0.85rem 2.2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Efecto de brillo deslizante */
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+
+  .cta-button:hover::before {
+    left: 100%;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: var(--sl-color-accent);
+    color: white;
+  }
+
+  /* Modo oscuro: sombras más profundas */
+  :root[data-theme="dark"] .cta-button {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  :root[data-theme="dark"] .cta-button:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .cta-banner {
+      padding: 2rem 1rem;
+    }
+    .cta-banner h2 {
+      font-size: 1.5rem;
+    }
+    .cta-button {
+      padding: 0.7rem 1.8rem;
+      font-size: 1rem;
+    }
+  }
+</style>

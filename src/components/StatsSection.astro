@@ -1,0 +1,95 @@
+---
+// src/components/StatsSection.astro
+const stats = [
+  { value: '+15', label: 'Años de experiencia' },
+  { value: '+200', label: 'Unidades propias' },
+  { value: '24/7', label: 'Atención continua' },
+  { value: '98%', label: 'Entregas a tiempo' },
+];
+---
+
+<div class="stats-section">
+  <div class="stats-grid">
+    {stats.map(stat => (
+      <div class="stat-card">
+        <div class="stat-value">{stat.value}</div>
+        <div class="stat-label">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .stats-section {
+    margin: 4rem 0;
+  }
+  .stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    flex: 1 1 200px; /* Base de 200px, pero crece de forma equitativa */
+    min-width: 180px;
+    max-width: 250px; /* Opcional: un ancho máximo para que no se estiren demasiado */
+    background: var(--sl-color-bg-sidebar);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+  }
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0B5394;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+  :root[data-theme="dark"] .stat-value {
+    color: #3B82F6;
+  }
+  .stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #4a5568;
+    text-align: center;
+    max-width: 100%;
+    word-break: keep-all;
+  }
+  :root[data-theme="dark"] .stat-label {
+    color: #cbd5e1;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .stats-grid {
+      gap: 1rem;
+    }
+    .stat-card {
+      flex-basis: 160px;
+      padding: 1rem 0.5rem;
+    }
+    .stat-value {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .stats-grid {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .stat-card {
+      max-width: none;
+      width: 100%;
+    }
+  }
+</style>
