@@ -25,6 +25,10 @@ export default defineConfig({
               label: "EMPRESA",
               link: "empresa/sobre-nosotros",
             },
+            {
+              label: "VIDEOS",
+              link: "multimedia/video-defensa",
+            },
           ],
         }),
       ],
