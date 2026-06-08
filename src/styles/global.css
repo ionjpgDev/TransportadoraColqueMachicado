@@ -300,3 +300,95 @@ header {
 .custom-cards-grid .card.sl-flex:hover {
   box-shadow: none !important;
 }
+
+/* =======================================================
+   TABLAS DINÁMICAS (CLARO / OSCURO)
+   ======================================================= */
+:root {
+  --table-border-color: rgba(0, 0, 0, 0.15);
+  --table-bg-color: rgba(128, 124, 131, 0.05);
+  --table-bg-hover: rgba(128, 124, 131, 0.1);
+  --table-header-bg: rgba(128, 124, 131, 0.12);
+  --table-text-color: #000000;
+  --table-text-muted: #334155;
+  --table-divider: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --table-border-color: rgba(255, 255, 255, 0.15);
+  --table-bg-color: rgba(24, 30, 52, 0.3);
+  --table-bg-hover: rgba(24, 30, 52, 0.5);
+  --table-header-bg: rgba(24, 30, 52, 0.6);
+  --table-text-color: #e2e8f0;
+  --table-text-muted: #94a3b8;
+  --table-divider: rgba(255, 255, 255, 0.08);
+}
+
+/* Forzar que las tablas con clases fijas de Tailwind usen las variables */
+.my-6.overflow-x-auto.rounded-xl.border.border-zinc-800.bg-zinc-900\/40,
+.rounded-xl.border.border-zinc-800.bg-zinc-900\/40 {
+  border-color: var(--table-border-color) !important;
+  background-color: var(--table-bg-color) !important;
+}
+
+/* Tablas dentro del contenedor */
+.min-w-full.divide-y.divide-zinc-800.text-sm.text-zinc-300 {
+  color: var(--table-text-color) !important;
+}
+
+.min-w-full.divide-y.divide-zinc-800.text-sm.text-zinc-300 td,
+.min-w-full.divide-y.divide-zinc-800.text-sm.text-zinc-300 th {
+  color: var(--table-text-muted) !important;
+}
+
+/* Cabeceras de tabla */
+.bg-zinc-900\/80 {
+  background-color: var(--table-header-bg) !important;
+}
+
+/* Filas */
+.hover\:bg-zinc-800\/30:hover {
+  background-color: var(--table-bg-hover) !important;
+}
+
+/* Líneas divisoras */
+.divide-y.divide-zinc-800 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--table-divider) !important;
+}
+
+/* Estilos adicionales para tablas markdown (si las usas) */
+.sl-markdown-content table,
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: var(--table-bg-color);
+  border: 1px solid var(--table-border-color);
+}
+
+.sl-markdown-content th,
+.content th {
+  background-color: var(--table-header-bg);
+  color: var(--table-text-color);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--table-divider);
+}
+
+.sl-markdown-content td,
+.content td {
+  padding: 0.75rem 1rem;
+  color: var(--table-text-muted);
+  border-bottom: 1px solid var(--table-divider);
+}
+
+.sl-markdown-content tr:last-child td,
+.content tr:last-child td {
+  border-bottom: none;
+}
+
+.sl-markdown-content tbody tr:hover,
+.content tbody tr:hover {
+  background-color: var(--table-bg-hover);
+}
