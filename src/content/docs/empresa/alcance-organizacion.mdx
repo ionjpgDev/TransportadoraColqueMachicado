@@ -1,0 +1,51 @@
+---
+title: Alcance de la Organización
+description: Descripción general, servicios, ubicación, volumen operativo y personal clave
+---
+
+import { Aside, Badge } from '@astrojs/starlight/components';
+
+<Badge text="Cobertura nacional" color="accent" /> <Badge text="Oficina central en La Paz" color="neutral" /> <Badge text="Flota propia" color="success" />
+
+La empresa **Transportadora Colque Machicado SRL** desarrolla sus actividades en la ciudad de **La Paz**, con cobertura a todo el territorio nacional. Su oficina central se ubica en la zona **Rosas Pampa, Calle 25 N.º 10**, lugar donde se gestionan las operaciones comerciales, el despacho de guías y la facturación.
+
+## Servicios ofrecidos
+
+- Transporte de carga nacional (mudanzas, repuestos, vehículos livianos, línea blanca, electrodomésticos, equipos electrónicos, textiles, etc.)
+- Distribución de mercancías con diferentes modalidades: puerta a puerta y entrega en agencia
+- Seguimiento de envíos (actualmente vía telefónica, propuesta futura con sistema)
+
+## Datos generales de la empresa
+
+<div class="my-6 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40">
+  <table class="min-w-full divide-y divide-zinc-800 text-sm text-zinc-300">
+    <thead class="bg-zinc-900/80 text-zinc-100 font-semibold">
+      <tr><th class="px-4 py-3 text-left">Aspecto</th><th class="px-4 py-3 text-left">Descripción</th></tr>
+    </thead>
+    <tbody class="divide-y divide-zinc-800/60">
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Razón social</td><td class="px-4 py-3">Transportadora Colque Machicado SRL</td></tr>
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Ubicación</td><td class="px-4 py-3">Zona Rosas Pampa, Calle 25 N.º 10, La Paz - Bolivia</td></tr>
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Rubro</td><td class="px-4 py-3">Transporte nacional de carga</td></tr>
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Volumen operativo</td><td class="px-4 py-3">Entre 3 y más de 6 envíos diarios (según demanda)</td></tr>
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Personal clave</td><td class="px-4 py-3">Gerente, despachadores, almaceneros, choferes</td></tr>
+      <tr><td class="px-4 py-3 font-medium text-emerald-400">Tipo de carga</td><td class="px-4 py-3">Mudanzas, electrodomésticos, electrónicos, textiles, repuestos</td></tr>
+    </tbody>
+  </table>
+</div>
+
+## Flujo general de operación (actual)
+
+1. **Recepción de pedido** – El cliente solicita el servicio.
+2. **Cotización y aprobación** – Se genera y acepta la cotización.
+3. **Asignación de recursos** – Se asigna chofer y vehículo.
+4. **Carga y despacho** – Se verifica la mercancía y se emite la guía.
+5. **Tránsito y seguimiento** – Se actualiza el estado del envío (manual).
+6. **Entrega y facturación** – Se confirma la entrega y se factura.
+
+<Aside type="caution">
+  Actualmente estos pasos se realizan con alto grado de intervención manual, uso de documentos físicos y registros dispersos (hojas de cálculo, talonarios), lo que genera duplicidad de datos, retrasos operativos y baja trazabilidad.
+</Aside>
+
+<Aside type="note">
+  El presente proyecto de análisis y diseño se centra en la sede principal de La Paz, pero la solución propuesta es escalable a futuras sucursales o puntos de recepción.
+</Aside>

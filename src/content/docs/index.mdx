@@ -1,72 +1,100 @@
 ---
 title: Transporte de carga <span class="font-extrabold bg-gradient-to-r from-emerald-500 via-green-400 to-teal-400 bg-clip-text text-transparent">confiable</span> y <span class="font-extrabold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">eficiente</span>
-description: Gestionamos el transporte de mercancías con procesos seguros, seguimiento operativo y control documental. Optimizamos cada envío para garantizar entregas oportunas y una mejor experiencia para nuestros clientes.
+description: Gestionamos el transporte de mercancías con procesos seguros, seguimiento operativo y control documental.
 template: splash
 hero:
   layout: split-left
-
   announcement:
-    text: Sobre la Empresa
-    link: TransportadoraColqueMachicado/sobre-nosotros
+    text: 📌 Sobre la Empresa
+    link: empresa/sobre-nosotros
   image:
     file: ../../assets/hombre-caja-web.webp
-
   actions:
-    - text: Ir a la documentación
+    - text: 📄 Ver expediente técnico
       link: proyecto-analisis/01-aspectos-generales
       icon: right-arrow
-    - text: Conocer servicios
-      link: sobre-nosotros
+    - text: 🏢 Conocer la empresa
+      link: empresa/sobre-nosotros
       variant: minimal
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 import { ContainerSection } from "lucode-starlight/components";
-import StatsSection from "../../components/StatsSection.astro";
-import CoverageSection from "../../components/CoverageSection.astro";
-import TestimonialsSection from "../../components/TestimonialsSection.astro";
-import CtaBanner from "../../components/CtaBanner.astro";
 
-    <ContainerSection stagger>
+<ContainerSection>
 
-<div class="custom-cards-grid">
+## 🚀 Sistema de Gestión de Transporte de Carga
+
+<div class="text-lg text-zinc-400 mb-8">
+  Este sitio contiene el expediente técnico desarrollado para la empresa <span class="text-emerald-400 font-semibold">Transportadora Colque Machicado S.R.L.</span>, orientado a resolver la descentralización de la información comercial, operativa y de facturación.
+</div>
+
+<div class="my-10">
 <CardGrid>
-  <Card title="Envíos Nacionales" icon="rocket">
-    Transporte de mercancías entre las principales ciudades del país.
-  </Card>
-
-<Card title="Cotizaciones" icon="open-book">
-  Solicite cotizaciones de manera rápida y organizada.
-</Card>
-
-<Card title="Seguimiento Operativo" icon="right-arrow">
-  Conozca el estado de sus envíos durante cada etapa del transporte.
-</Card>
-
-<Card title="Gestión Documental" icon="pencil">
-  Administración centralizada de pedidos, guías y comprobantes.
-</Card>
-
-<Card title="Atención Personalizada" icon="star">
-  Soluciones adaptadas a las necesidades de cada cliente.
-</Card>
-
-  <Card title="Operaciones Seguras" icon="warning">
-    Procesos orientados a la protección y control de la mercancía.
-  </Card>
+  <Card title="📊 Gestión Comercial" icon="open-book">Administración de clientes, cotizaciones, pedidos y recibos digitales.</Card>
+  <Card title="🚛 Operaciones de Transporte" icon="rocket">Generación de guías, asignación de choferes y seguimiento de viajes.</Card>
+  <Card title="🧾 Facturación Electrónica" icon="pencil">Integración con <span class="text-emerald-400">SIAT</span> para emisión y validación de facturas electrónicas.</Card>
+  <Card title="📍 Trazabilidad" icon="star">Seguimiento completo desde la cotización hasta la entrega final.</Card>
+  <Card title="🗄️ Información Centralizada" icon="warning">Eliminación de registros duplicados y control documental unificado.</Card>
+  <Card title="📈 Panel Gerencial" icon="right-arrow">Consulta de historial, indicadores y estados operativos en tiempo real.</Card>
 </CardGrid>
 </div>
-  <StatsSection />
-  <CoverageSection />
 
-<TestimonialsSection />
+</ContainerSection>
 
-  <CtaBanner
-    text={{
-      title: "¿Listo para cotizar?",
-      description: "Respondemos en menos de 2 horas.",
-    }}
-    link="/TransportadoraColqueMachicado/contacto"
-    buttonText="Ir a contacto"
-  />
+<ContainerSection>
+
+## 📋 Módulos del Sistema
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
+    <div class="flex items-center gap-3 mb-3"><div class="text-3xl">📊</div><h3 class="text-xl font-bold text-white">Módulo Comercial</h3></div>
+    <p class="text-zinc-400 text-sm">Clientes, cotizaciones y pedidos</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Registro de clientes (NIT, dirección)</li><li>✓ Cotizaciones automáticas</li><li>✓ Conversión a pedido</li></ul>
+  </div>
+  <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
+    <div class="flex items-center gap-3 mb-3"><div class="text-3xl">🚛</div><h3 class="text-xl font-bold text-white">Módulo Operaciones</h3></div>
+    <p class="text-zinc-400 text-sm">Guías, despachos y seguimiento</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Generación de guías de carga</li><li>✓ Asignación de choferes y vehículos</li><li>✓ Estados: Cargado, En ruta, Entregado</li></ul>
+  </div>
+  <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
+    <div class="flex items-center gap-3 mb-3"><div class="text-3xl">🧾</div><h3 class="text-xl font-bold text-white">Módulo Facturación</h3></div>
+    <p class="text-zinc-400 text-sm">Emisión electrónica SIAT</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Facturación electrónica</li><li>✓ Validación con SIAT</li><li>✓ Obtención de CUF</li></ul>
+  </div>
+  <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
+    <div class="flex items-center gap-3 mb-3"><div class="text-3xl">📈</div><h3 class="text-xl font-bold text-white">Módulo Gerencia</h3></div>
+    <p class="text-zinc-400 text-sm">Reportes e indicadores</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Dashboard ejecutivo</li><li>✓ Historial de envíos</li><li>✓ Indicadores de rendimiento</li></ul>
+  </div>
+</div>
+
+</ContainerSection>
+
+<ContainerSection>
+<div class="overflow-x-auto my-6">
+  <table class="w-full border-collapse rounded-xl overflow-hidden">
+    <thead><tr class="bg-gradient-to-r from-emerald-900/60 to-teal-900/60"><th class="px-5 py-3 text-left text-white font-semibold">Módulo</th><th class="px-5 py-3 text-left text-white font-semibold">Funcionalidad Principal</th><th class="px-5 py-3 text-left text-white font-semibold">Beneficio Clave</th></tr></thead>
+    <tbody class="divide-y divide-zinc-800">
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">📊 Comercial</td><td class="px-5 py-3 text-zinc-300">Clientes, cotizaciones y pedidos</td><td class="px-5 py-3 text-zinc-400">Registro centralizado</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">🚛 Operaciones</td><td class="px-5 py-3 text-zinc-300">Guías, despachos y seguimiento</td><td class="px-5 py-3 text-zinc-400">Trazabilidad en tiempo real</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">🧾 Facturación</td><td class="px-5 py-3 text-zinc-300">Emisión electrónica SIAT</td><td class="px-5 py-3 text-zinc-400">Cumplimiento tributario</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">📈 Gerencia</td><td class="px-5 py-3 text-zinc-300">Reportes e indicadores</td><td class="px-5 py-3 text-zinc-400">Toma de decisiones</td></tr>
+    </tbody>
+  </table>
+</div>
+</ContainerSection>
+
+<ContainerSection>
+<div class="text-center py-8"><div class="inline-flex gap-4"><span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 text-sm">🏆 Metodología RUP</span><span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm">📐 UML & BPMN</span><span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm">🗄️ Modelo Entidad-Relación</span><span class="px-4 py-2 rounded-full bg-amber-500/10 text-amber-400 text-sm">📄 DFD & Diccionario de datos</span></div></div>
+</ContainerSection>
+
+<ContainerSection>
+<div class="rounded-xl border border-zinc-800 bg-gradient-to-r from-zinc-900/60 to-zinc-900/30 p-8 text-center my-6">
+  <p class="text-zinc-300 text-lg mb-4">Explora el expediente técnico completo o conoce más sobre la empresa</p>
+  <div class="flex justify-center gap-4">
+    <a href="/proyecto-analisis/01-aspectos-generales" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors">📄 Ver expediente técnico</a>
+    <a href="/empresa/sobre-nosotros" class="px-5 py-2 rounded-lg border border-zinc-700 hover:border-emerald-500 text-zinc-300 hover:text-white transition-colors">🏢 Conocer la empresa</a>
+  </div>
+</div>
 </ContainerSection>

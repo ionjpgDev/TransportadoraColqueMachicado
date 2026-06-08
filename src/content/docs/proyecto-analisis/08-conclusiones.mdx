@@ -1,0 +1,28 @@
+---
+title: Conclusiones y Recomendaciones
+description: Resumen de logros y sugerencias para futuras fases
+---
+
+import { Badge, Aside } from '@astrojs/starlight/components';
+
+<Badge text="Logros" color="success" /> <Badge text="Líneas futuras" color="accent" />
+
+## Conclusiones
+
+- Se identificaron los procesos y requerimientos mediante entrevistas, observación directa y revisión documental, confirmando la existencia de duplicidad y descentralización de la información.
+- El análisis de la administración actual evidenció problemas de registros dispersos, dependencia manual y baja trazabilidad.
+- Se modelaron los procesos comerciales, operativos y de facturación utilizando BPMN (actual y propuesto), DFD, UML y modelo entidad-relación, logrando una representación integral.
+- Se diseñó la estructura lógica y funcional del sistema, incluyendo el diccionario de datos y las reglas de negocio, lo que permite mejorar el control operativo.
+- Se definió el proceso técnico de facturación electrónica e integración con SIAT, reduciendo el riesgo de inconsistencias en el registro de facturas.
+
+## Recomendaciones
+
+- Implementar el sistema en fases, comenzando por el módulo de guías y despacho (el de mayor impacto inmediato).
+- Capacitar al personal en el uso de la nueva plataforma digital antes del despliegue.
+- Establecer políticas de respaldo y seguridad de la información, así como planes de continuidad operativa.
+- Realizar pruebas de integración con el SIAT en un ambiente de pruebas (sandbox) antes de pasar a producción.
+- Considerar una futura expansión del sistema para incluir seguimiento GPS en tiempo real y una aplicación móvil para clientes.
+
+<Aside type="tip">
+  El expediente técnico desarrollado constituye una base sólida para la construcción del sistema en una etapa posterior.
+</Aside>

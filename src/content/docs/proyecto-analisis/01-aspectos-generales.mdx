@@ -1,0 +1,99 @@
+---
+title: Aspectos Generales
+description: Introducción, antecedentes, diagnóstico, problemática, objetivos, justificación, alcance y planificación del proyecto
+---
+
+import { Aside, Badge, Card, CardGrid } from '@astrojs/starlight/components';
+
+<Badge text="Transformación digital" color="accent" /> <Badge text="SIAT" color="neutral" /> <Badge text="RUP" color="success" />
+
+## Introducción
+
+En el contexto actual, marcado por la transformación digital y la creciente exigencia de eficiencia operativa, la gestión de la información se ha convertido en un pilar fundamental para las empresas del sector logístico. El presente proyecto desarrolla el expediente técnico correspondiente al análisis y modelado arquitectónico de un **Sistema de Gestión de Guías de Carga y Facturación** para la empresa Transportadora Colque Machicado SRL, ubicada en La Paz. Actualmente, la empresa gestiona sus operaciones con documentos físicos, hojas de cálculo dispersas y registros reiterativos, generando cuellos de botella, baja trazabilidad y riesgos de inconsistencia fiscal.
+
+A esta problemática se suma la obligatoriedad de integrar los procesos comerciales con el Sistema Integrado de la Administración Tributaria (SIAT) para la emisión de facturas electrónicas en línea. Mediante la aplicación rigurosa de la metodología Rational Unified Process (RUP) y la integración de los paradigmas estructurado y orientado a objetos, este documento establece una base técnica para un futuro desarrollo de software.
+
+![Cajas preparadas](/src/assets/diagramas/caja1.webp)
+*Figura 1: Cajas preparadas para el proceso de envío y despacho*
+
+![Unidad de transporte cargada](/src/assets/diagramas/camionCargando.webp)
+*Figura 2: Unidad de transporte cargada para salida operativa*
+
+![Recibo administrativo](/src/assets/diagramas/recibo.webp)
+*Figura 3: Recibo utilizado durante procesos administrativos*
+
+## Antecedentes
+
+Transportadora Colque Machicado SRL se dedica al transporte nacional de carga y mudanzas (repuestos, electrodomésticos, textiles, electrónicos). Actualmente la información de guías y procesos operativos se gestiona con registros físicos y herramientas ofimáticas, lo que origina duplicidad de datos y retrasos operativos. La creciente exigencia de facturación electrónica (SIAT) hace necesaria una reorganización de los procedimientos internos.
+
+## Diagnóstico
+
+Mediante entrevistas y observación directa se identificaron errores en conteo de cajas, registros incorrectos, duplicidad de datos, dificultades en seguimiento de cargas (dependencia de llamadas telefónicas) y repetición de tareas administrativas.
+
+<div class="my-6 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40">
+  <table class="min-w-full divide-y divide-zinc-800 text-sm text-zinc-300">
+    <thead class="bg-zinc-900/80 text-zinc-100 font-semibold"><tr><th class="px-4 py-3 text-left">Problema</th><th class="px-4 py-3 text-left">Causa</th><th class="px-4 py-3 text-left">Consecuencia</th></tr></thead>
+    <tbody class="divide-y divide-zinc-800/60">
+      <tr><td class="px-4 py-3">Duplicidad de registros</td><td class="px-4 py-3">Uso de diferentes medios</td><td class="px-4 py-3">Inconsistencia de información</td></tr>
+      <tr><td class="px-4 py-3">Registro manual</td><td class="px-4 py-3">Guías físicas</td><td class="px-4 py-3">Retrasos operativos</td></tr>
+      <tr><td class="px-4 py-3">Seguimiento manual</td><td class="px-4 py-3">Dependencia de llamadas</td><td class="px-4 py-3">Baja trazabilidad</td></tr>
+    </tbody>
+  </table>
+</div>
+
+## Planteamiento del problema
+
+**Problema principal:** Inexistencia de un sistema centralizado para la gestión de guías de carga y facturación, capaz de integrar la información comercial, operativa y de facturación bajo una sola plataforma.
+
+**Problemas secundarios:** registro repetitivo, administración descentralizada, dependencia de procesos manuales, dificultad de control, riesgo de inconsistencias en facturación.
+
+**Formulación:** ¿De qué manera un expediente técnico de análisis y diseño podrá contribuir a la definición de un sistema centralizado para la gestión de guías de carga y facturación en Transportadora Colque Machicado SRL bajo normativa SIAT?
+
+## Árbol de problemas
+
+![Árbol de problemas](/src/assets/diagramas/arboldeProblemas.webp)
+
+## Objetivos
+
+**General:** Elaborar un expediente técnico de análisis y diseño para la gestión de guías de carga y facturación en Transportadora Colque Machicado SRL, mediante levantamiento de requerimientos y aplicación de paradigmas estructurado y orientado a objetos, bajo normativas SIAT.
+
+**Específicos:**
+1. Identificar procesos y requerimientos mediante entrevistas, observación y revisión documental.
+2. Analizar la administración actual de información para identificar problemas de descentralización.
+3. Modelar los procesos mediante BPMN y herramientas estructuradas.
+4. Diseñar la estructura lógica y funcional con UML y modelo entidad-relación.
+5. Definir el proceso técnico de facturación electrónica e integración con SIAT.
+
+## Justificación
+
+- **Técnica:** estandarizar procesos y eliminar duplicidad.
+- **Tecnológica:** modelo integrado con BPMN, UML y ER.
+- **Económica:** reducción de costos operativos ocultos.
+- **Metodológica:** combinación de enfoque estructurado y orientado a objetos.
+
+## Alcance
+
+- **Temporal:** 2 meses.
+- **Espacial:** Oficina central en La Paz (Rosas Pampa, Calle 25 Nº10).
+
+![Ubicación geográfica](/src/assets/diagramas/ubicacionMapa.webp)
+*Figura 4: Ubicación geográfica de la Transportadora Colque Machicado SRL*
+
+- **Funcional:** análisis y diseño (no implementación) de clientes, cotizaciones, guías, asignación de recursos, estados de viaje, incidencias, facturación SIAT y modelado BPMN/DFD/UML/ER. No incluye desarrollo, GPS, app móvil, migración de datos, módulos contables avanzados.
+
+## Planificación (Gantt)
+
+<div class="my-6 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40">
+  <table class="min-w-full divide-y divide-zinc-800 text-sm text-zinc-300">
+    <thead class="bg-zinc-900/80 text-zinc-100 font-semibold"><tr><th class="px-4 py-3 text-left">Fase RUP</th><th class="px-4 py-3 text-left">Actividad</th><th class="px-4 py-3 text-left">Responsable</th><th class="px-4 py-3 text-left">Semanas</th></tr></thead>
+    <tbody class="divide-y divide-zinc-800/60">
+      <tr><td class="px-4 py-3">Inicio</td><td class="px-4 py-3">Definir alcance, actores, objetivos, árbol de problemas</td><td class="px-4 py-3">Líder</td><td class="px-4 py-3">1-2</td></tr>
+      <tr><td class="px-4 py-3">Elaboración</td><td class="px-4 py-3">ERS, casos de uso UML, DFD nivel 0/1, modelo ER conceptual, BPMN</td><td class="px-4 py-3">Analista Procesos, Ing. Requisitos, Arquitecto Datos</td><td class="px-4 py-3">3-4</td></tr>
+      <tr><td class="px-4 py-3">Construcción</td><td class="px-4 py-3">Diccionario de datos, DER lógico, diagramas UML (clases, secuencia), plan de calidad ISO 25010</td><td class="px-4 py-3">Arquitecto Datos, QA</td><td class="px-4 py-3">5-6</td></tr>
+      <tr><td class="px-4 py-3">Transición</td><td class="px-4 py-3">Revisión, publicación web, preparación defensa</td><td class="px-4 py-3">Líder</td><td class="px-4 py-3">7-8</td></tr>
+      <tr><td class="px-4 py-3">Entrega</td><td class="px-4 py-3">ENTREGA FINAL (impreso + URL + defensa)</td><td class="px-4 py-3">Todos</td><td class="px-4 py-3">Semana 8</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<Aside type="tip">Esta planificación garantiza la entrega completa del expediente técnico en dos meses.</Aside>

@@ -1,0 +1,89 @@
+---
+title: Análisis Orientado a Objetos
+description: Modelo de clases UML, BPMN (actual y propuesto), interacciones dinámicas y casos de uso
+---
+
+import { Badge, Aside } from '@astrojs/starlight/components';
+
+<Badge text="UML" color="accent" /> <Badge text="BPMN" color="neutral" /> <Badge text="Casos de uso" color="success" />
+
+## Modelo de clases UML
+
+![Diagrama de clases UML](/src/assets/diagramas/diagrmadeClases.webp)
+*Figura 13: Diagrama de clases UML del sistema*
+
+## Modelado con BPMN
+
+### Proceso actual
+
+![BPMN actual - Cotización manual](/src/assets/diagramas/bpmncotizacionManual.webp)
+*Figura 14: BPMN – Cotización manual (proceso actual)*
+
+![BPMN actual - Despacho operativo](/src/assets/diagramas/bpmnActualDespachooperativo.webp)
+*Figura 15: BPMN – Despacho operativo (proceso actual)*
+
+![BPMN actual - Recepción en almacén](/src/assets/diagramas/bpmnrecepcionAlmacenactual.webp)
+*Figura 16: BPMN – Recepción en almacén (proceso actual)*
+
+![BPMN actual - Distribución vial](/src/assets/diagramas/bpmnDistribucionVialActual.webp)
+*Figura 17: BPMN – Distribución vial (proceso actual)*
+
+![BPMN actual - Cierre de caja y facturación](/src/assets/diagramas/CierreCajaFacBpmnACtual.webp)
+*Figura 18: BPMN – Cierre de caja y facturación (proceso actual)*
+
+### Proceso propuesto
+
+![BPMN propuesto - Cotizaciones digitales](/src/assets/diagramas/bpmnPropuestogestionDecotizaciones.webp)
+*Figura 19: BPMN – Gestión de cotizaciones digitales*
+
+![BPMN propuesto - Emisión automática de guías](/src/assets/diagramas/bpmnEmisionautomaicadeGuias.webp)
+*Figura 20: BPMN – Emisión automática de guías*
+
+![BPMN propuesto - Control digital de almacén](/src/assets/diagramas/bpmncontrolAlmancenOriginPropuesto.webp)
+*Figura 21: BPMN – Control digital de almacén*
+
+![BPMN propuesto - Tránsito y entregas](/src/assets/diagramas/bpmnTransitoYmodalidaddeEntregaPropuesto.webp)
+*Figura 22: BPMN – Tránsito y entregas*
+
+![BPMN propuesto - Integración SIAT](/src/assets/diagramas/CierreComercialYfacturacionPropuesto.webp)
+*Figura 23: BPMN – Integración y facturación SIAT*
+
+## Interacciones dinámicas
+
+El diagrama de secuencia para facturación electrónica (ver Anexo D) muestra el intercambio de mensajes entre interfaz web, reglas de negocio, SIAT y base de datos.
+
+## Casos de uso
+
+### Casos de uso de negocio
+
+![Casos de uso de negocio](/src/assets/diagramas/casosDeUsoNegocioColque.webp)
+*Figura 24: Diagrama de casos de uso de negocio*
+
+### Casos de uso de sistema
+
+#### Módulo de facturación e integración SIAT
+![Casos de uso - Facturación SIAT](/src/assets/diagramas/casosdeUsofacturacioneintegracionsiat.webp)
+*Figura 25: Casos de uso – Facturación e integración SIAT*
+
+#### Módulo de cotizaciones y pedidos
+![Casos de uso - Cotizaciones](/src/assets/diagramas/casosdesusocCotizacionypedido.webp)
+*Figura 26: Casos de uso – Cotizaciones y pedidos*
+
+#### Módulo de guías y despachos
+![Casos de uso - Guías y despacho](/src/assets/diagramas/casosdesusoiGuiaYdespacho.webp)
+*Figura 27: Casos de uso – Guías y despacho*
+
+#### Módulo de control operativo y almacén
+![Casos de uso - Control operativo](/src/assets/diagramas/casosDesusocontroloeprativoyalamcen.webp)
+*Figura 28: Casos de uso – Control operativo y de almacén*
+
+### Casos de uso en texto (ejemplo: Generar Factura)
+
+**Alto nivel:**
+- Caso de uso: Generar Factura
+- Actores: Gerente, SIAT
+- Descripción: El gerente genera la factura electrónica una vez confirmada la entrega, valida datos, envía a SIAT y obtiene CUF.
+
+**Expandido:** Precondiciones (entrega confirmada, cliente registrado, anticipo pagado si es casual). Secuencia normal: solicitar factura → verificar estado Entregado → confirmar datos → calcular monto → generar XML → enviar a SIAT → recibir CUF → almacenar factura. Cursos alternos: saldo pendiente (solicitar pago), SIAT no responde (reintentar hasta 3 veces, luego marcar pendiente).
+
+<Aside type="tip">Los casos de uso en texto expandido detallan los flujos principales y excepciones para guiar la implementación futura.</Aside>

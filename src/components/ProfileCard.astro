@@ -1,0 +1,56 @@
+---
+// src/components/ProfileCard.astro
+
+export interface Props {
+    name: string;
+    role: string;
+    ci: string;
+    gender: "male" | "female";
+    avatarStyle?: "adventurer" | "adventurer-neutral" | "pixel-art" | "bottts" | "fun-emoji" | "micah" | "lorelei" | "open-peeps";
+}
+
+const { name, role, ci, gender, avatarStyle = "adventurer" } = Astro.props;
+
+// Generar un seed único desde el nombre
+const seed = encodeURIComponent(name);
+
+// URL de avatar con temática de programador (agregando accesorios)
+const avatarUrl = `https://api.dicebear.com/9.x/${avatarStyle}/svg?seed=${seed}&gender=${gender}&backgroundColor=10b981,0f172a,1e293b&radius=50&size=96&accessoriesProbability=50&glassesProbability=30&laptop=100&code=100`;
+---
+
+<div class="group rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-6 text-center transition-all duration-300 hover:scale-105 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10">
+    
+    <!-- Avatar con glow effect -->
+    <div class="relative inline-block mx-auto mb-4">
+        <div class="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl group-hover:bg-emerald-500/30 transition-all duration-300"></div>
+        <img 
+            src={avatarUrl}
+            alt={`Avatar de ${name}`}
+            class="relative w-28 h-28 rounded-full mx-auto object-cover border-3 border-emerald-500 bg-zinc-800 shadow-lg transition-all duration-300 group-hover:border-emerald-400 group-hover:shadow-emerald-500/25"
+        />
+    </div>
+    
+    <!-- Nombre -->
+    <h3 class="text-xl font-bold text-white mb-1 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+        {name}
+    </h3>
+    
+    <!-- CI -->
+    <p class="text-xs text-zinc-500 mb-2">CI: {ci}</p>
+    
+    <!-- Badge de rol -->
+    <div class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 mt-2 mb-3">
+        {role}
+    </div>
+    
+    <!-- Línea decorativa -->
+    <div class="mt-4 pt-3 border-t border-zinc-800/50">
+        <div class="flex justify-center gap-1">
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/40"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/60"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/60"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/40"></div>
+        </div>
+    </div>
+</div>
