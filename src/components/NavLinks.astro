@@ -1,6 +1,5 @@
 ---
-// src/components/NavLinks.astro
-// Componente personalizado para la navegación con menú desplegable en hover
+// src/components/NavLinks.astro - ALTURA FIJA
 
 interface NavLink {
   label: string;
@@ -52,8 +51,11 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
   <ul class="nav-list">
     {navLinks.map((item) => (
       <li class="nav-item">
-        <a href={`${baseUrl}/${item.link}`.replace(/\/+/g, "/")} class="nav-link">
-          {item.label}
+        <a 
+          href={`${baseUrl}/${item.link}`.replace(/\/+/g, "/")} 
+          class="nav-link"
+        >
+          <span class="nav-label">{item.label}</span>
           {item.submenu && <span class="dropdown-arrow">▼</span>}
         </a>
 
@@ -62,8 +64,11 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
             <ul class="dropdown-list">
               {item.submenu.map((subitem) => (
                 <li class="dropdown-item">
-                  <a href={`${baseUrl}/${subitem.link}`.replace(/\/+/g, "/")} class="dropdown-link">
-                    {subitem.label}
+                  <a 
+                    href={`${baseUrl}/${subitem.link}`.replace(/\/+/g, "/")} 
+                    class="dropdown-link"
+                  >
+                    <span>{subitem.label}</span>
                   </a>
                 </li>
               ))}
@@ -79,8 +84,9 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
   .nav-container {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
     width: 100%;
+    height: 100%;
   }
 
   .nav-list {
@@ -88,98 +94,112 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 0.25rem;
-    flex-wrap: wrap;
+    gap: 0.2rem;
+    flex-wrap: nowrap;
     align-items: center;
-    width: 100%;
     justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   .nav-item {
     position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-shrink: 0;
   }
 
   .nav-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.5rem;
-    font-size: 0.95rem;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0 0.75rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
     position: relative;
     white-space: nowrap;
+    border: 2px solid transparent;
+    height: 100%;
   }
 
-  /* Estilos base del nav link */
+  .nav-label {
+    display: flex;
+    align-items: center;
+  }
+
   :root[data-theme="light"] .nav-link {
     color: #1a1a1a;
-    background-color: rgba(200, 190, 180, 0.1);
+    background: rgba(200, 190, 180, 0.08);
   }
 
   :root[data-theme="dark"] .nav-link {
     color: #f5f5f5;
-    background-color: rgba(100, 116, 139, 0.15);
+    background: rgba(100, 116, 139, 0.1);
   }
 
-  /* Hover effect */
   .nav-link:hover {
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
+    transform: translateY(-1px);
   }
 
   :root[data-theme="light"] .nav-link:hover {
-    background-color: rgba(200, 190, 180, 0.25);
+    background: rgba(200, 160, 130, 0.2);
     color: #0a5e4d;
+    border-color: rgba(10, 94, 77, 0.3);
+    box-shadow: 0 4px 12px rgba(10, 94, 77, 0.12);
   }
 
   :root[data-theme="dark"] .nav-link:hover {
-    background-color: rgba(100, 116, 139, 0.3);
+    background: rgba(16, 185, 129, 0.15);
     color: #10b981;
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
   }
 
   .dropdown-arrow {
-    font-size: 0.7rem;
+    font-size: 0.55rem;
     transition: transform 0.3s ease;
+    margin-left: 0.2rem;
+    flex-shrink: 0;
   }
 
-  /* Menú desplegable */
   .dropdown-menu {
     position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 240px;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 200px;
     background-color: var(--sl-color-bg);
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 1000;
-    margin-top: 0.5rem;
-    border: 1px solid rgba(100, 116, 139, 0.2);
+    border: 2px solid rgba(16, 185, 129, 0.25);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
   }
 
   :root[data-theme="light"] .dropdown-menu {
-    background-color: #ffffff;
-    border-color: rgba(200, 190, 180, 0.3);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 
   :root[data-theme="dark"] .dropdown-menu {
-    background-color: #0b111e;
-    border-color: rgba(100, 116, 139, 0.3);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    background: rgba(11, 17, 30, 0.96);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   }
 
-  /* Mostrar dropdown al hover del nav-item */
   .nav-item:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
   }
 
   .nav-item:hover .dropdown-arrow {
@@ -197,10 +217,11 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
   }
 
   .dropdown-link {
-    display: block;
-    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     transition: all 0.2s ease;
     border-left: 3px solid transparent;
   }
@@ -215,34 +236,35 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
 
   .dropdown-link:hover {
     border-left-color: #10b981;
+    transform: translateX(3px);
   }
 
   :root[data-theme="light"] .dropdown-link:hover {
-    background-color: rgba(200, 190, 180, 0.1);
+    background: rgba(200, 190, 180, 0.12);
     color: #0a5e4d;
   }
 
   :root[data-theme="dark"] .dropdown-link:hover {
-    background-color: rgba(16, 185, 129, 0.1);
+    background: rgba(16, 185, 129, 0.12);
     color: #10b981;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
+  /* Desktop Responsive */
+  @media (max-width: 1400px) {
+    .nav-list {
+      gap: 0.15rem;
+    }
+
     .nav-link {
-      padding: 0.6rem 1rem;
-      font-size: 0.85rem;
+      padding: 0 0.7rem;
+      font-size: 0.75rem;
     }
   }
 
-  @media (max-width: 768px) {
-    .nav-list {
-      gap: 0.5rem;
-    }
-
+  @media (max-width: 1200px) {
     .nav-link {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.75rem;
+      padding: 0 0.65rem;
+      font-size: 0.7rem;
     }
 
     .dropdown-menu {
@@ -250,31 +272,149 @@ const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
     }
 
     .dropdown-link {
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 0.9rem;
       font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .nav-list {
+      gap: 0.1rem;
+    }
+
+    .nav-link {
+      padding: 0 0.6rem;
+      font-size: 0.65rem;
     }
 
     .dropdown-arrow {
+      display: none;
+    }
+
+    .dropdown-menu {
+      min-width: 160px;
+    }
+
+    .dropdown-link {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav-link {
+      padding: 0 0.5rem;
       font-size: 0.6rem;
+    }
+
+    .dropdown-link {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.65rem;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .nav-container {
+      width: 100%;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+      height: auto;
+    }
+
+    .nav-item {
+      width: 100%;
+      height: auto;
+    }
+
+    .nav-link {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      width: 100%;
+      justify-content: space-between;
+      border-radius: 0.5rem;
+    }
+
+    .dropdown-arrow {
+      display: inline-flex;
+    }
+
+    .dropdown-menu {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      min-width: auto;
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      margin-top: 0;
+      margin-left: 1.5rem;
+      margin-bottom: 0.4rem;
+      border: 1px solid rgba(100, 116, 139, 0.2);
+      background: rgba(100, 116, 139, 0.05);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+      backdrop-filter: none;
+      pointer-events: auto;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      max-height: 400px;
+    }
+
+    .dropdown-list {
+      padding: 0.4rem 0;
+    }
+
+    .dropdown-link {
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-link {
+      padding: 0.55rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .dropdown-link {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.75rem;
     }
   }
 
   @media (max-width: 480px) {
-    .nav-list {
-      gap: 0.25rem;
-    }
-
     .nav-link {
-      padding: 0.4rem 0.6rem;
-      font-size: 0.65rem;
-    }
-
-    .dropdown-menu {
-      min-width: 150px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
     }
 
     .dropdown-link {
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.7rem;
+    }
+
+    .dropdown-menu {
+      margin-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .nav-link {
+      padding: 0.45rem 0.7rem;
+      font-size: 0.7rem;
+    }
+
+    .dropdown-link {
+      padding: 0.4rem 0.7rem;
       font-size: 0.65rem;
     }
   }

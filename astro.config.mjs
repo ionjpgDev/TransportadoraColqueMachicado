@@ -11,15 +11,19 @@ export default defineConfig({
 
     integrations: [
         starlight({
+            // En la sección de components de starlight
+            components: {
+                SocialIcons: "./src/components/CustomSocialIcons.astro",
+                Header: "./src/components/overrides/Header.astro",
+            },
             plugins: [
                 lucode({
                     footerText:
                         "© 2026 Expediente Técnico de Ingeniería de Software — Desarrollado bajo enfoques de Análisis Estructurado y Orientado a Objetos (UML/RUP).<br /> Diseñado para Transportadora Colque Machicado S.R.L.",
                 }),
             ],
-            
+
             components: {
-                SocialIcons: "./src/components/CustomSocialIcons.astro",
                 Header: "./src/components/overrides/Header.astro",
             },
 
