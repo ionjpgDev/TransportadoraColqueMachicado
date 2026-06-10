@@ -1,3 +1,4 @@
+// astro.config.mjs
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
@@ -14,37 +15,12 @@ export default defineConfig({
                 lucode({
                     footerText:
                         "© 2026 Expediente Técnico de Ingeniería de Software — Desarrollado bajo enfoques de Análisis Estructurado y Orientado a Objetos (UML/RUP).<br /> Diseñado para Transportadora Colque Machicado S.R.L.",
-                    navLinks: [
-                        {
-                            label: "INICIO",
-                            link: "/",
-                        },
-                        {
-                            label: "DOCUMENTACIÓN",
-                            link: "proyecto-analisis/01-aspectos-generales",
-                        },
-                        {
-                            label: "ANÁLISIS ESTRUCTURADO",
-                            link: "proyecto-analisis/04-analisis-estructurado",
-                        },
-                        {
-                            label: "ANÁLISIS ORIENTADO A OBJETOS",
-                            link: "proyecto-analisis/05-analisis-oo",
-                        },
-                        {
-                            label: "VIDEOS",
-                            link: "multimedia/video-defensa",
-                        },
-                        {
-                            label: "EMPRESA",
-                            link: "empresa/sobre-nosotros",
-                        },
-                    ],
                 }),
             ],
             
             components: {
                 SocialIcons: "./src/components/CustomSocialIcons.astro",
+                Header: "./src/components/overrides/Header.astro",
             },
 
             title: "TRANSPORTADORA COLQUE MACHICADO S.R.L.",

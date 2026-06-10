@@ -1,0 +1,33 @@
+---
+// src/components/overrides/Header.astro
+import NavLinks from '../NavLinks.astro';
+---
+
+<header>
+  <NavLinks />
+</header>
+
+<style>
+  header {
+    background-color: rgba(197, 197, 197, 0.9) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none !important;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  :root[data-theme="dark"] header {
+    background-color: rgba(11, 17, 30, 0.9) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 0.75rem 1rem;
+    }
+  }
+</style>

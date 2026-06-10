@@ -1,0 +1,281 @@
+---
+// src/components/NavLinks.astro
+// Componente personalizado para la navegación con menú desplegable en hover
+
+interface NavLink {
+  label: string;
+  link: string;
+  submenu?: Array<{ label: string; link: string }>;
+}
+
+const navLinks: NavLink[] = [
+  {
+    label: "INICIO",
+    link: "/",
+  },
+  {
+    label: "DOCUMENTACIÓN",
+    link: "proyecto-analisis/01-aspectos-generales",
+    submenu: [
+      { label: "Aspectos Generales", link: "proyecto-analisis/01-aspectos-generales" },
+      { label: "Marco Metodológico", link: "proyecto-analisis/02-marco-metodologico" },
+      { label: "Marco Teórico", link: "proyecto-analisis/03-marco-teorico" },
+    ],
+  },
+  {
+    label: "ANÁLISIS ESTRUCTURADO",
+    link: "proyecto-analisis/04-analisis-estructurado",
+  },
+  {
+    label: "ANÁLISIS ORIENTADO A OBJETOS",
+    link: "proyecto-analisis/05-analisis-oo",
+  },
+  {
+    label: "VIDEOS",
+    link: "multimedia/video-defensa",
+  },
+  {
+    label: "EMPRESA",
+    link: "empresa/sobre-nosotros",
+    submenu: [
+      { label: "Misión, Visión e Identidad", link: "empresa/identidad-mision" },
+      { label: "Alcance y Organización", link: "empresa/alcance-organizacion" },
+      { label: "Sobre Nosotros", link: "empresa/sobre-nosotros" },
+    ],
+  },
+];
+
+const baseUrl = import.meta.env.BASE_URL || "/TransportadoraColqueMachicado";
+---
+
+<nav class="nav-container">
+  <ul class="nav-list">
+    {navLinks.map((item) => (
+      <li class="nav-item">
+        <a href={`${baseUrl}/${item.link}`.replace(/\/+/g, "/")} class="nav-link">
+          {item.label}
+          {item.submenu && <span class="dropdown-arrow">▼</span>}
+        </a>
+
+        {item.submenu && (
+          <div class="dropdown-menu">
+            <ul class="dropdown-list">
+              {item.submenu.map((subitem) => (
+                <li class="dropdown-item">
+                  <a href={`${baseUrl}/${subitem.link}`.replace(/\/+/g, "/")} class="dropdown-link">
+                    {subitem.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .nav-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  /* Estilos base del nav link */
+  :root[data-theme="light"] .nav-link {
+    color: #1a1a1a;
+    background-color: rgba(200, 190, 180, 0.1);
+  }
+
+  :root[data-theme="dark"] .nav-link {
+    color: #f5f5f5;
+    background-color: rgba(100, 116, 139, 0.15);
+  }
+
+  /* Hover effect */
+  .nav-link:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  :root[data-theme="light"] .nav-link:hover {
+    background-color: rgba(200, 190, 180, 0.25);
+    color: #0a5e4d;
+  }
+
+  :root[data-theme="dark"] .nav-link:hover {
+    background-color: rgba(100, 116, 139, 0.3);
+    color: #10b981;
+  }
+
+  .dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  /* Menú desplegable */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background-color: var(--sl-color-bg);
+    border-radius: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(100, 116, 139, 0.2);
+  }
+
+  :root[data-theme="light"] .dropdown-menu {
+    background-color: #ffffff;
+    border-color: rgba(200, 190, 180, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  :root[data-theme="dark"] .dropdown-menu {
+    background-color: #0b111e;
+    border-color: rgba(100, 116, 139, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Mostrar dropdown al hover del nav-item */
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-item:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+
+  .dropdown-item {
+    margin: 0;
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  :root[data-theme="light"] .dropdown-link {
+    color: #1a1a1a;
+  }
+
+  :root[data-theme="dark"] .dropdown-link {
+    color: #f5f5f5;
+  }
+
+  .dropdown-link:hover {
+    border-left-color: #10b981;
+  }
+
+  :root[data-theme="light"] .dropdown-link:hover {
+    background-color: rgba(200, 190, 180, 0.1);
+    color: #0a5e4d;
+  }
+
+  :root[data-theme="dark"] .dropdown-link:hover {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav-link {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-list {
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .dropdown-menu {
+      min-width: 180px;
+    }
+
+    .dropdown-link {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.75rem;
+    }
+
+    .dropdown-arrow {
+      font-size: 0.6rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-list {
+      gap: 0.25rem;
+    }
+
+    .nav-link {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.65rem;
+    }
+
+    .dropdown-menu {
+      min-width: 150px;
+    }
+
+    .dropdown-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.65rem;
+    }
+  }
+</style>
