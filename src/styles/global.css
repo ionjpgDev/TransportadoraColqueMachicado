@@ -103,7 +103,15 @@
         z-index: 0;
         animation: glowMove 18s ease-in-out infinite alternate;
     }
+/* Cuando el sitio está en modo claro, fuerza el texto blanco solo en este botón */
+[data-theme="light"] .link-button.primary.astro-gag72otp.astro-zelngfsg {
+  color: #ffffff !important;
+}
 
+/* En caso de que tu tema use una clase .light en el body o html en lugar de data-theme */
+:global(.light) .link-button.primary.astro-gag72otp.astro-zelngfsg {
+  color: #ffffff !important;
+}
     /* Ajustes para modo oscuro */
     :root[data-theme="dark"] body,
     :root[data-theme="dark"] .sl-page,
@@ -305,7 +313,7 @@ header {
    TABLAS DINÁMICAS (CLARO / OSCURO)
    ======================================================= */
 :root {
-  --table-border-color: rgba(0, 0, 0, 0.15);
+  --table-border-color: rgba(133, 133, 133, 0.15);
   --table-bg-color: rgba(128, 124, 131, 0.05);
   --table-bg-hover: rgba(128, 124, 131, 0.1);
   --table-header-bg: rgba(128, 124, 131, 0.12);

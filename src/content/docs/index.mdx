@@ -1,12 +1,12 @@
 ---
-title: Transporte de carga <span class="font-extrabold bg-gradient-to-r from-emerald-500 via-green-400 to-teal-400 bg-clip-text text-transparent">confiable</span> y <span class="font-extrabold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">eficiente</span>
-description: Gestionamos el transporte de mercancías con procesos seguros, seguimiento operativo y control documental.
+title: Expediente Técnico de Ingeniería <span class="font-extrabold bg-gradient-to-r from-emerald-500 via-green-400 to-teal-400 bg-clip-text text-transparent">Estructurado</span> y <span class="font-extrabold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">Orientado a Objetos</span>
+description: Documentación de análisis y diseño de sistemas para Transportadora Colque Machicado S.R.L., integrando modelado de procesos, datos y arquitectura de software.
 template: splash
 hero:
   layout: split-left
   announcement:
-    text: 📌 Sobre la Empresa
-    link: empresa/sobre-nosotros
+    text: 📐 Arquitectura del Sistema e Ingeniería de Software
+    link: proyecto-analisis/01-aspectos-generales
   image:
     file: ../../assets/hombre-caja-web.webp
   actions:
@@ -26,17 +26,15 @@ import { ContainerSection } from "lucode-starlight/components";
 ## 🚀 Sistema de Gestión de Transporte de Carga
 
 <div class="text-lg text-zinc-400 mb-8">
-  Este sitio contiene el expediente técnico desarrollado para la empresa <span class="text-emerald-400 font-semibold">Transportadora Colque Machicado S.R.L.</span>, orientado a resolver la descentralización de la información comercial, operativa y de facturación.
+  Este sitio aloja el **expediente técnico integral** desarrollado para <span class="text-emerald-400 font-semibold">Transportadora Colque Machicado S.R.L.</span> Su propósito es centralizar la información comercial, operativa y de facturación mediante un enfoque híbrido de ingeniería de software que combina el **Análisis Estructurado** para la persistencia y flujo de datos, con el **Diseño Orientado a Objetos** para la arquitectura lógica del sistema.
 </div>
 
 <div class="my-10">
 <CardGrid>
-  <Card title="📊 Gestión Comercial" icon="open-book">Administración de clientes, cotizaciones, pedidos y recibos digitales.</Card>
-  <Card title="🚛 Operaciones de Transporte" icon="rocket">Generación de guías, asignación de choferes y seguimiento de viajes.</Card>
-  <Card title="🧾 Facturación Electrónica" icon="pencil">Integración con <span class="text-emerald-400">SIAT</span> para emisión y validación de facturas electrónicas.</Card>
-  <Card title="📍 Trazabilidad" icon="star">Seguimiento completo desde la cotización hasta la entrega final.</Card>
-  <Card title="🗄️ Información Centralizada" icon="warning">Eliminación de registros duplicados y control documental unificado.</Card>
-  <Card title="📈 Panel Gerencial" icon="right-arrow">Consulta de historial, indicadores y estados operativos en tiempo real.</Card>
+  <Card title="📐 Diseño Estructurado" icon="setting">Modelado de procesos mediante Diagramas de Flujo de Datos (DFD), Diccionario de Datos y el diseño base de datos relacional (Entidad-Relación).</Card>
+  <Card title="🧩 Orientado a Objetos" icon="seti:json">Representación del dominio del sistema mediante artefactos UML: Diagramas de Clases, Casos de Uso y Secuencia para un software escalable.</Card>
+  <Card title="🚛 Control Operativo" icon="rocket">Arquitectura diseñada para la generación de guías, asignación eficiente de choferes y trazabilidad completa de viajes.</Card>
+  <Card title="🧾 Facturación SIAT" icon="pencil">Integración modular orientada a servicios para la comunicación, emisión y validación de facturas con Impuestos Nacionales.</Card>
 </CardGrid>
 </div>
 
@@ -44,54 +42,56 @@ import { ContainerSection } from "lucode-starlight/components";
 
 <ContainerSection>
 
-## 📋 Módulos del Sistema
+## 📋 Módulos Analizados en el Expediente
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
   <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
     <div class="flex items-center gap-3 mb-3"><div class="text-3xl">📊</div><h3 class="text-xl font-bold text-white">Módulo Comercial</h3></div>
-    <p class="text-zinc-400 text-sm">Clientes, cotizaciones y pedidos</p>
-    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Registro de clientes (NIT, dirección)</li><li>✓ Cotizaciones automáticas</li><li>✓ Conversión a pedido</li></ul>
+    <p class="text-zinc-400 text-sm">Entidades y procesos de preventa y contratos</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Gestión de Clientes (Modelado de datos de NIT y direcciones)</li><li>✓ Lógica de Cotizaciones Automatizadas</li><li>✓ Transición de estados de negocio (Cotización a Pedido)</li></ul>
   </div>
   <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
     <div class="flex items-center gap-3 mb-3"><div class="text-3xl">🚛</div><h3 class="text-xl font-bold text-white">Módulo Operaciones</h3></div>
-    <p class="text-zinc-400 text-sm">Guías, despachos y seguimiento</p>
-    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Generación de guías de carga</li><li>✓ Asignación de choferes y vehículos</li><li>✓ Estados: Cargado, En ruta, Entregado</li></ul>
+    <p class="text-zinc-400 text-sm">Control logístico y flujos operativos</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Ciclo de vida de la Guía de Carga</li><li>✓ Asignación dinámica de choferes y flota vehicular</li><li>✓ Máquina de estados: Cargado, En ruta y Entregado</li></ul>
   </div>
   <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
     <div class="flex items-center gap-3 mb-3"><div class="text-3xl">🧾</div><h3 class="text-xl font-bold text-white">Módulo Facturación</h3></div>
-    <p class="text-zinc-400 text-sm">Emisión electrónica SIAT</p>
-    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Facturación electrónica</li><li>✓ Validación con SIAT</li><li>✓ Obtención de CUF</li></ul>
+    <p class="text-zinc-400 text-sm">Integración con Servicios Web Gubernamentales</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Modularización del protocolo de comunicación SIAT</li><li>✓ Firmado digital y empaquetamiento de facturas</li><li>✓ Gestión de contingencias y obtención de código CUF</li></ul>
   </div>
   <div class="rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900/40 to-zinc-900/20 p-5 transition-all hover:scale-105 hover:border-emerald-500/50">
     <div class="flex items-center gap-3 mb-3"><div class="text-3xl">📈</div><h3 class="text-xl font-bold text-white">Módulo Gerencia</h3></div>
-    <p class="text-zinc-400 text-sm">Reportes e indicadores</p>
-    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Dashboard ejecutivo</li><li>✓ Historial de envíos</li><li>✓ Indicadores de rendimiento</li></ul>
+    <p class="text-zinc-400 text-sm">Análisis de información para la toma de decisiones</p>
+    <ul class="mt-3 space-y-1 text-sm text-zinc-500"><li>✓ Especificación de requerimientos para reportes analíticos</li><li>✓ Definición de indicadores clave (KPIs de transporte)</li><li>✓ Consolidación histórica de estados operativos</li></ul>
   </div>
 </div>
 
 </ContainerSection>
 
 <ContainerSection>
+
+### 🔍 Enfoques de Modelado Aplicados
+
 <div class="overflow-x-auto my-6">
   <table class="w-full border-collapse rounded-xl overflow-hidden">
-    <thead><tr class="bg-gradient-to-r from-emerald-900/60 to-teal-900/60"><th class="px-5 py-3 text-left text-white font-semibold">Módulo</th><th class="px-5 py-3 text-left text-white font-semibold">Funcionalidad Principal</th><th class="px-5 py-3 text-left text-white font-semibold">Beneficio Clave</th></tr></thead>
+    <thead><tr class="bg-gradient-to-r from-emerald-900/60 to-teal-900/60"><th class="px-5 py-3 text-left text-white font-semibold">Perspectiva</th><th class="px-5 py-3 text-left text-white font-semibold">Artefactos Utilizados</th><th class="px-5 py-3 text-left text-white font-semibold">Objetivo del Análisis</th></tr></thead>
     <tbody class="divide-y divide-zinc-800">
-      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">📊 Comercial</td><td class="px-5 py-3 text-zinc-300">Clientes, cotizaciones y pedidos</td><td class="px-5 py-3 text-zinc-400">Registro centralizado</td></tr>
-      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">🚛 Operaciones</td><td class="px-5 py-3 text-zinc-300">Guías, despachos y seguimiento</td><td class="px-5 py-3 text-zinc-400">Trazabilidad en tiempo real</td></tr>
-      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">🧾 Facturación</td><td class="px-5 py-3 text-zinc-300">Emisión electrónica SIAT</td><td class="px-5 py-3 text-zinc-400">Cumplimiento tributario</td></tr>
-      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">📈 Gerencia</td><td class="px-5 py-3 text-zinc-300">Reportes e indicadores</td><td class="px-5 py-3 text-zinc-400">Toma de decisiones</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-emerald-400">📐 Diseño Estructurado</td><td class="px-5 py-3 text-zinc-300">DFD (Nivel 0, 1 y 2), Diccionario de Datos, Diagramas Entidad-Relación (DER)</td><td class="px-5 py-3 text-zinc-400">Mapear el flujo detallado de la información y estructurar la base de datos centralizada.</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-violet-400">🧩 Orientado a Objetos</td><td class="px-5 py-3 text-zinc-300">Casos de Uso, Diagramas de Clases (Dominio), Diagramas de Secuencia (UML)</td><td class="px-5 py-3 text-zinc-400">Modularizar los componentes del software, definir responsabilidades y encapsular la lógica del negocio.</td></tr>
+      <tr class="hover:bg-zinc-900/40"><td class="px-5 py-3 font-semibold text-amber-400">💼 Negocio y Procesos</td><td class="px-5 py-3 text-zinc-300">Modelado BPMN, Matriz CRUD, Especificación de Requerimientos</td><td class="px-5 py-3 text-zinc-400">Alinear las reglas operativas de la empresa con la arquitectura técnica planteada.</td></tr>
     </tbody>
   </table>
 </div>
 </ContainerSection>
 
 <ContainerSection>
-<div class="text-center py-8"><div class="inline-flex gap-4"><span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 text-sm">🏆 Metodología RUP</span><span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm">📐 UML & BPMN</span><span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm">🗄️ Modelo Entidad-Relación</span><span class="px-4 py-2 rounded-full bg-amber-500/10 text-amber-400 text-sm">📄 DFD & Diccionario de datos</span></div></div>
+<div class="text-center py-8"><div class="grid grid-cols-2 md:inline-flex gap-4 justify-center"><span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-medium border border-emerald-500/20">🏆 Metodología RUP</span><span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-medium border border-purple-500/20">📐 UML Estructural & Comportamiento</span><span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium border border-blue-500/20">🗄️ Modelo Relacional Normalizado</span><span class="px-4 py-2 rounded-full bg-amber-500/10 text-amber-400 text-sm font-medium border border-amber-500/20">📄 DFD & Diccionario de Datos</span></div></div>
 </ContainerSection>
 
 <ContainerSection>
 <div class="rounded-xl border border-zinc-800 bg-gradient-to-r from-zinc-900/60 to-zinc-900/30 p-8 text-center my-6">
-  <p class="text-zinc-300 text-lg mb-4">Explora el expediente técnico completo o conoce más sobre la empresa</p>
+  <p class="text-zinc-300 text-lg mb-4">Navega a través de las secciones de ingeniería estructurada y orientada a objetos en el expediente técnico</p>
   <div class="flex justify-center gap-4">
     <a href="proyecto-analisis/01-aspectos-generales" class="px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors">📄 Ver expediente técnico</a>
     <a href="empresa/sobre-nosotros" class="px-5 py-2 rounded-lg border border-zinc-700 hover:border-emerald-500 text-zinc-300 hover:text-white transition-colors">🏢 Conocer la empresa</a>
