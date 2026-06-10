@@ -400,3 +400,38 @@ header {
 .content tbody tr:hover {
   background-color: var(--table-bg-hover);
 }
+/* Contenedor del Lightbox (oculto por defecto) */
+#lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+/* Imagen dentro del Lightbox */
+#lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+/* Cambia el cursor sobre las imágenes del artículo para indicar que se pueden ampliar */
+.content img, .prose img {
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.content img:hover, .prose img:hover {
+  opacity: 0.9;
+}
